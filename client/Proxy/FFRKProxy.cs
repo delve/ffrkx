@@ -73,6 +73,7 @@ namespace FFRKInspector.Proxy
             mResponseHandlers.Add(new HandleGachaSeriesList());
             mResponseHandlers.Add(new HandleGachaSeriesDetails());
             mResponseHandlers.Add(new HandleCompleteBattle());
+            mResponseHandlers.Add(new HandleFollowersAndFollowees());
 
             mHistory = new ResponseHistory();
             mGameState = new GameState();

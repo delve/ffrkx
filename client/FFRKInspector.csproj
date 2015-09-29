@@ -84,6 +84,7 @@
     <Compile Include="DataCache\Worlds.cs" />
     <Compile Include="EquipmentStatsDataSet.cs">
       <DependentUpon>EquipmentStatsDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EquipmentStatsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -109,6 +110,8 @@
     <Compile Include="GameData\DataUserDungeon.cs" />
     <Compile Include="GameData\EquipmentUsage.cs" />
     <Compile Include="GameData\EquipStats.cs" />
+    <Compile Include="GameData\Friends\DataRelationPackage.cs" />
+    <Compile Include="GameData\Friends\DataTargetProfiles.cs" />
     <Compile Include="GameData\StatCalculator.cs" />
     <Compile Include="MissingItemsDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -135,7 +138,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="GameData\Friends\DataRelatedRW.cs" />
+    <Compile Include="GameData\Friends\DataAllRelations.cs" />
     <Compile Include="Proxy\HandleAppInitData.cs" />
+    <Compile Include="Proxy\HandleFollowersAndFollowees.cs" />
     <Compile Include="Proxy\HandleGachaSeriesDetails.cs" />
     <Compile Include="Proxy\HandleGachaSeriesList.cs" />
     <Compile Include="Proxy\HandleListBattles.cs" />
