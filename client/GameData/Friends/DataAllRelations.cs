@@ -11,9 +11,9 @@ namespace FFRKInspector.GameData.Friends
     class DataAllRelations
     {
         [JsonProperty("followers")]
-        public DataRelationPackage[] Followers;
+        public DataRelationPackage Followers;
 
         [JsonProperty("followees")]
-        public DataRelationPackage[] Followees;
+        public DataRelationPackage Followees;
     }
 }

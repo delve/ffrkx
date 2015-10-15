@@ -22,57 +22,89 @@ namespace FFRKInspector.Proxy
     /// parsing:
     ///     build a DB of followees by userid, leave most of data blank until the user id comes up in a target_profile.
     ///     keep these data points from target_profile
-    ///         nickname = player name (for identification in app list)
-    ///         profile_message = slogan (for identification in app list)
-    ///         user_id = matches to 'user_relations'
-    ///         relation_status = 1 is follower, 2 is followee, 3 is mutual
-    ///         supporter_buddy_soul_strike_name = name of the SB
-    ///         stats:
-    ///         supporter_buddy_acc = accuracy
-    ///         supporter_buddy_atk = attack
-    ///         supporter_buddy_matk = magic
-    ///         supporter_buddy_mnd = mind
-    ///         supporter_buddy_spd = speed
     /// </summary>
     class HandleFollowersAndFollowees : SimpleResponseHandler
     {
         public override bool CanHandle(Session Session)
         {
             string RequestPath = Session.oRequest.headers.RequestPath;
-            return RequestPath.Equals("/dff/relation/followee_and_follower_list", StringComparison.CurrentCultureIgnoreCase)
-                || RequestPath.Equals("/dff/relation/find_by_user_ids", StringComparison.CurrentCultureIgnoreCase);
+            return RequestPath.Equals("/dff/relation/followee_and_follower_list", StringComparison.CurrentCultureIgnoreCase) //initial response from friends list from Menu
+                || RequestPath.Equals("/dff/relation/find_by_user_ids", StringComparison.CurrentCultureIgnoreCase)           //loading next page from friends list OR battle select screen
+                || RequestPath.Equals("/dff/relation/detailed_fellow_listing", StringComparison.CurrentCultureIgnoreCase);   //initial response from battle select screen
         }
 
         public override void Handle(Session Session)
         {
-            if (Session.oRequest.headers.RequestPath.Equals("/dff/relation/followee_and_follower_list", StringComparison.CurrentCultureIgnoreCase))
-            {
-                //We just opened the friends list. populate the user_relations list and add in the 5 target_profiles rcvd
-                //parse json for follower and followee arrays, then parse those for target profiles and user relations, then merge into one array
+            List<DataRelatedRW> RWs = new List<DataRelatedRW>();
+            List<DataTargetProfile> Profiles = new List<DataTargetProfile>();
 
-                DataAllRelations followersFollowees = JsonConvert.DeserializeObject<DataAllRelations>(GetResponseBody(Session));
-            } 
-            else
-            {
-                //must be a /dff/relation/find_by_user_ids ; add the 5 new target_profiles
+            if (Session.oRequest.headers.RequestPath.Equals("/dff/relation/followee_and_follower_list", StringComparison.CurrentCultureIgnoreCase))
+            {   
+                //We just opened the friends list. get all the user_relations and the target_profiles rcvd
+                DataAllRelations FolloweesFollowers = JsonConvert.DeserializeObject<DataAllRelations>(GetResponseBody(Session));
+                Profiles.AddRange(FolloweesFollowers.Followees.Profiles);
+                Profiles.AddRange(FolloweesFollowers.Followers.Profiles);
+
+                foreach (DataRelatedRW RW_relation in FolloweesFollowers.Followees.Users)
+                {
+                    DataTargetProfile ProfileData = Profiles.FirstOrDefault(a => a.UserID == RW_relation.UserID);
+                    if (ProfileData != null)
+                        RW_relation.UpdateRWData(ProfileData);
+                    RWs.Add(RW_relation);
+                }
+
+                foreach (DataRelatedRW RW_relation in FolloweesFollowers.Followers.Users.Where((rw) => rw.Status == 1))
+                {
+                    DataTargetProfile ProfileData = Profiles.FirstOrDefault(a => a.UserID == RW_relation.UserID);
+                    if (ProfileData != null)
+                        RW_relation.UpdateRWData(ProfileData);
+                    RWs.Add(RW_relation);
+                }
             }
 
-            //DbOpInsertItems insert_request = new DbOpInsertItems();
-            //foreach (DataEquipmentInformation equip in party.Equipments)
-            //{
-            //    DbOpInsertItems.ItemRecord record = new DbOpInsertItems.ItemRecord();
-            //    record.EquipCategory = equip.Category;
-            //    record.Id = equip.EquipmentId;
-            //    record.Name = equip.Name.TrimEnd(' ', '+', '＋');
-            //    record.Type = equip.Type;
-            //    record.Rarity = equip.BaseRarity;
-            //    record.Series = equip.SeriesId;
-            //    insert_request.Items.Add(record);
-            //}
-            //FFRKProxy.Instance.Database.BeginExecuteRequest(insert_request);
+            if (Session.oRequest.headers.RequestPath.Equals("/dff/relation/find_by_user_ids", StringComparison.CurrentCultureIgnoreCase))
+            {
+                //extract the DataRelatedRW records and the target_profiles
+                DataRelationPackage RelationsPackage = JsonConvert.DeserializeObject<DataRelationPackage>(GetResponseBody(Session));
+                RWs.AddRange(RelationsPackage.Users);
+                Profiles.AddRange(RelationsPackage.Profiles);
+                foreach (DataRelatedRW RW_relation in RelationsPackage.Users)
+                {
+                    DataTargetProfile ProfileData = Profiles.FirstOrDefault(a => a.UserID == RW_relation.UserID);
+                    if (ProfileData != null)
+                        RW_relation.UpdateRWData(ProfileData);
+                    RWs.Add(RW_relation);
+                }
+            }
 
-            //FFRKProxy.Instance.GameState.PartyDetails = party;
-            //FFRKProxy.Instance.RaisePartyList(party);
+            if (Session.oRequest.headers.RequestPath.Equals("/dff/relation/detailed_fellow_listing", StringComparison.CurrentCultureIgnoreCase))
+            {
+                //TODO: got a fellow listing at the dungeon entrance screen. Not quite sure what to do with this yet.
+                //DataRelationPackage RelationsPackage = JsonConvert.DeserializeObject<DataRelationPackage>(GetResponseBody(Session));
+                //RWs.AddRange(RelationsPackage.Users);
+                //Profiles.AddRange(RelationsPackage.Profiles);
+            }
+
+            //Update existing list of RWs and add new RWs
+            List<DataRelatedRW> AllRWs = FFRKProxy.Instance.GameState.RelatedRWs;
+            foreach (DataRelatedRW NewRW in RWs)
+            {
+                DataRelatedRW ExistingRW = AllRWs.FirstOrDefault(a => a.UserID == NewRW.UserID);
+                if (ExistingRW != null)
+                {
+                    //Update if we have existing data
+                    if (NewRW.SBName != "")
+                        ExistingRW.UpdateRWData(NewRW);
+                }
+                else
+                {
+                    //Otherwise it's added completely new
+                    AllRWs.Add(NewRW);
+                }
+            }
+                
+            FFRKProxy.Instance.GameState.RelatedRWs = AllRWs;
+            FFRKProxy.Instance.RaiseFriendsList(AllRWs);
         }
     }
 }

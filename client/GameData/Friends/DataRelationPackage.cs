@@ -11,9 +11,9 @@ namespace FFRKInspector.GameData.Friends
     class DataRelationPackage
     {
         [JsonProperty("target_profiles")]
-        public DataTargetProfiles[] Profiles;
+        public List<DataTargetProfile> Profiles;
 
         [JsonProperty("user_relations")]
-        public DataRelatedRW[] Users;
+        public List<DataRelatedRW> Users;
     }
 }
