@@ -31,9 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewRWs = new FFRKInspector.UI.DataGridViewEx();
-            this.dgcUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcNickname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcRelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcSBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcFriendCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,9 +49,11 @@
             this.dataGridViewRWs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRWs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRWs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgcUserId,
+            this.dgcNickname,
             this.dgcRelation,
-            this.dgcSBName});
+            this.dgcSBName,
+            this.dgcFriendCode,
+            this.dgcUserID});
             this.dataGridViewRWs.Location = new System.Drawing.Point(19, 3);
             this.dataGridViewRWs.Name = "dataGridViewRWs";
             this.dataGridViewRWs.ReadOnly = true;
@@ -61,14 +65,14 @@
             this.dataGridViewRWs.Size = new System.Drawing.Size(485, 625);
             this.dataGridViewRWs.TabIndex = 0;
             // 
-            // dgcUserId
+            // dgcNickname
             // 
-            this.dgcUserId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgcUserId.HeaderText = "User ID";
-            this.dgcUserId.MinimumWidth = 50;
-            this.dgcUserId.Name = "dgcUserId";
-            this.dgcUserId.ReadOnly = true;
-            this.dgcUserId.Width = 68;
+            this.dgcNickname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgcNickname.HeaderText = "Name";
+            this.dgcNickname.MinimumWidth = 50;
+            this.dgcNickname.Name = "dgcNickname";
+            this.dgcNickname.ReadOnly = true;
+            this.dgcNickname.Width = 60;
             // 
             // dgcRelation
             // 
@@ -87,6 +91,22 @@
             this.dgcSBName.ReadOnly = true;
             this.dgcSBName.Width = 77;
             // 
+            // dgcFriendCode
+            // 
+            this.dgcFriendCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgcFriendCode.HeaderText = "Friend Code";
+            this.dgcFriendCode.Name = "dgcFriendCode";
+            this.dgcFriendCode.ReadOnly = true;
+            this.dgcFriendCode.Width = 89;
+            // 
+            // dgcUserID
+            // 
+            this.dgcUserID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgcUserID.HeaderText = "User ID";
+            this.dgcUserID.Name = "dgcUserID";
+            this.dgcUserID.ReadOnly = true;
+            this.dgcUserID.Width = 68;
+            // 
             // FFRKViewRWs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,8 +123,10 @@
         #endregion
 
         private DataGridViewEx dataGridViewRWs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcNickname;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcRelation;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcSBName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcFriendCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcUserID;
     }
 }

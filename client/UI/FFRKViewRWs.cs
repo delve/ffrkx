@@ -59,9 +59,12 @@ namespace FFRKInspector.UI
             {
                 DataGridViewRow row = dataGridViewRWs.Rows[cur_row];
                 row.Tag = RWData;
-                row.Cells[dgcUserId.Name].Value = RWData.UserID;
+                row.Cells[dgcNickname.Name].Value = RWData.NickName;
                 row.Cells[dgcRelation.Name].Value = Enum.GetName(typeof(DataRelatedRW.Relationship), RWData.RelationStatus);
                 row.Cells[dgcSBName.Name].Value = RWData.SBName;
+                //TODO: Figure out how the hell to derive this from the UserID data
+                row.Cells[dgcFriendCode.Name].Value = "";
+                row.Cells[dgcUserID.Name].Value = RWData.UserID;
 
                 ++cur_row;
             }
