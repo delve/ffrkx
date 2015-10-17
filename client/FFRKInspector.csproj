@@ -110,8 +110,8 @@
     <Compile Include="GameData\DataUserDungeon.cs" />
     <Compile Include="GameData\EquipmentUsage.cs" />
     <Compile Include="GameData\EquipStats.cs" />
-    <Compile Include="GameData\Friends\DataRelationPackage.cs" />
-    <Compile Include="GameData\Friends\DataTargetProfiles.cs" />
+    <Compile Include="GameData\RWs\DataRelationPackage.cs" />
+    <Compile Include="GameData\RWs\DataTargetProfiles.cs" />
     <Compile Include="GameData\StatCalculator.cs" />
     <Compile Include="MissingItemsDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -138,8 +138,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="GameData\Friends\DataRelatedRW.cs" />
-    <Compile Include="GameData\Friends\DataAllRelations.cs" />
+    <Compile Include="GameData\RWs\DataRelatedRW.cs" />
+    <Compile Include="GameData\RWs\DataAllRelations.cs" />
     <Compile Include="Proxy\HandleAppInitData.cs" />
     <Compile Include="Proxy\HandleFollowersAndFollowees.cs" />
     <Compile Include="Proxy\HandleGachaSeriesDetails.cs" />

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Fiddler;
 using FFRKInspector.Database;
 using FFRKInspector.GameData;
-using FFRKInspector.GameData.Friends;
+using FFRKInspector.GameData.RWs;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using FFRKInspector.UI;
@@ -268,7 +268,7 @@ namespace FFRKInspector.Proxy
         internal void RaiseLeaveDungeon() { if (OnLeaveDungeon != null) OnLeaveDungeon(); }
         internal void RaiseBattleComplete(EventBattleInitiated original_battle) { if (OnCompleteBattle != null) OnCompleteBattle(original_battle); }
         internal void RaisePartyList(DataPartyDetails party) { if (OnPartyList != null) OnPartyList(party); }
-        internal void RaiseFriendsList(List<DataRelatedRW> friends) { if (OnFriendsList != null) OnFriendsList(friends); }
+        internal void RaiseRWList(List<DataRelatedRW> RWs) { if (OnRWList != null) OnRWList(RWs); }
 
         internal delegate void BattleInitiatedDelegate(EventBattleInitiated battle);
         internal delegate void BattleResultDelegate(EventBattleInitiated battle);
@@ -278,7 +278,7 @@ namespace FFRKInspector.Proxy
         internal delegate void FFRKDefaultDelegate();
         internal delegate void FFRKResponseDelegate(string Path);
         internal delegate void FFRKPartyListDelegate(DataPartyDetails party);
-        internal delegate void FFRKFriendsListDelegate(List<DataRelatedRW> friends);
+        internal delegate void FFRKRWListDelegate(List<DataRelatedRW> RWs);
 
         internal event BattleInitiatedDelegate OnBattleEngaged;
         internal event ListBattlesDelegate OnListBattles;
@@ -289,6 +289,6 @@ namespace FFRKInspector.Proxy
         internal event FFRKResponseDelegate OnFFRKResponse;
         internal event FFRKDefaultDelegate OnItemCacheRefreshed;
         internal event FFRKPartyListDelegate OnPartyList;
-        internal event FFRKFriendsListDelegate OnFriendsList;
+        internal event FFRKRWListDelegate OnRWList;
     }
 }

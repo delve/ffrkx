@@ -1,5 +1,5 @@
 ﻿using FFRKInspector.GameData.Party;
-using FFRKInspector.GameData.Friends;
+using FFRKInspector.GameData.RWs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

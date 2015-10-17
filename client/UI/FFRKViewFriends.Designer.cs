@@ -30,42 +30,68 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridViewEx1 = new FFRKInspector.UI.DataGridViewEx();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEx1)).BeginInit();
+            this.dataGridViewRWs = new FFRKInspector.UI.DataGridViewEx();
+            this.dgcUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcSBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewEx1
+            // dataGridViewRWs
             // 
-            this.dataGridViewEx1.AllowUserToAddRows = false;
-            this.dataGridViewEx1.AllowUserToDeleteRows = false;
-            this.dataGridViewEx1.AllowUserToOrderColumns = true;
-            this.dataGridViewEx1.AllowUserToResizeRows = false;
+            this.dataGridViewRWs.AllowUserToAddRows = false;
+            this.dataGridViewRWs.AllowUserToDeleteRows = false;
+            this.dataGridViewRWs.AllowUserToOrderColumns = true;
+            this.dataGridViewRWs.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(213)))), ((int)(((byte)(180)))));
-            this.dataGridViewEx1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewEx1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEx1.Location = new System.Drawing.Point(19, 3);
-            this.dataGridViewEx1.Name = "dataGridViewEx1";
+            this.dataGridViewRWs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewRWs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRWs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgcUserId,
+            this.dgcSBName});
+            this.dataGridViewRWs.Location = new System.Drawing.Point(19, 3);
+            this.dataGridViewRWs.Name = "dataGridViewRWs";
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(210)))), ((int)(((byte)(228)))));
-            this.dataGridViewEx1.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewEx1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewEx1.ShowEditingIcon = false;
-            this.dataGridViewEx1.Size = new System.Drawing.Size(485, 625);
-            this.dataGridViewEx1.TabIndex = 0;
+            this.dataGridViewRWs.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewRWs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewRWs.ShowEditingIcon = false;
+            this.dataGridViewRWs.Size = new System.Drawing.Size(485, 625);
+            this.dataGridViewRWs.TabIndex = 0;
+            // 
+            // dgcUserId
+            // 
+            this.dgcUserId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgcUserId.HeaderText = "User ID";
+            this.dgcUserId.MinimumWidth = 50;
+            this.dgcUserId.Name = "dgcUserId";
+            this.dgcUserId.ReadOnly = true;
+            this.dgcUserId.Width = 68;
+            // 
+            // dgcSBName
+            // 
+            this.dgcSBName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgcSBName.HeaderText = "SB Name";
+            this.dgcSBName.MinimumWidth = 60;
+            this.dgcSBName.Name = "dgcSBName";
+            this.dgcSBName.ReadOnly = true;
+            this.dgcSBName.Width = 77;
             // 
             // FFRKViewFriends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridViewEx1);
+            this.Controls.Add(this.dataGridViewRWs);
             this.Name = "FFRKViewFriends";
             this.Size = new System.Drawing.Size(816, 631);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEx1)).EndInit();
+            this.Load += new System.EventHandler(this.FFRKViewInventory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DataGridViewEx dataGridViewEx1;
+        private DataGridViewEx dataGridViewRWs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcSBName;
     }
 }

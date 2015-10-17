@@ -1,6 +1,6 @@
 ﻿using FFRKInspector.Database;
 using FFRKInspector.GameData;
-using FFRKInspector.GameData.Friends;
+using FFRKInspector.GameData.RWs;
 using Fiddler;
 using Newtonsoft.Json;
 using System;
@@ -87,9 +87,14 @@ namespace FFRKInspector.Proxy
 
             //Update existing list of RWs and add new RWs
             List<DataRelatedRW> AllRWs = FFRKProxy.Instance.GameState.RelatedRWs;
+            if (AllRWs == null)
+            {
+                AllRWs = new List<DataRelatedRW>();
+            }
+
             foreach (DataRelatedRW NewRW in RWs)
             {
-                DataRelatedRW ExistingRW = AllRWs.FirstOrDefault(a => a.UserID == NewRW.UserID);
+                DataRelatedRW ExistingRW = AllRWs.FirstOrDefault(a => a.UserID == NewRW.UserID); ;
                 if (ExistingRW != null)
                 {
                     //Update if we have existing data
@@ -104,7 +109,7 @@ namespace FFRKInspector.Proxy
             }
                 
             FFRKProxy.Instance.GameState.RelatedRWs = AllRWs;
-            FFRKProxy.Instance.RaiseFriendsList(AllRWs);
+            FFRKProxy.Instance.RaiseRWList(AllRWs);
         }
     }
 }

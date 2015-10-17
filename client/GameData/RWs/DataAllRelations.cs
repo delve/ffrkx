@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FFRKInspector.GameData.Friends
+namespace FFRKInspector.GameData.RWs
 {
     class DataAllRelations
     {
