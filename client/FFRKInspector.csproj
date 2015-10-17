@@ -209,11 +209,11 @@
     <Compile Include="UI\FFRKViewDebugging.Designer.cs">
       <DependentUpon>FFRKViewDebugging.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FFRKViewFriends.cs">
+    <Compile Include="UI\FFRKViewRWs.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\FFRKViewFriends.Designer.cs">
-      <DependentUpon>FFRKViewFriends.cs</DependentUpon>
+    <Compile Include="UI\FFRKViewRWs.Designer.cs">
+      <DependentUpon>FFRKViewRWs.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FFRKViewGacha.cs">
       <SubType>UserControl</SubType>
@@ -314,8 +314,8 @@
     <EmbeddedResource Include="UI\DatabaseUI\FFRKViewDatabase.resx">
       <DependentUpon>FFRKViewDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FFRKViewFriends.resx">
-      <DependentUpon>FFRKViewFriends.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FFRKViewRWs.resx">
+      <DependentUpon>FFRKViewRWs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FFRKViewGacha.resx">
       <DependentUpon>FFRKViewGacha.cs</DependentUpon>

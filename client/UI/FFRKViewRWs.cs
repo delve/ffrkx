@@ -18,9 +18,9 @@ using System.IO;
 
 namespace FFRKInspector.UI
 {
-    public partial class FFRKViewFriends : UserControl
+    public partial class FFRKViewRWs : UserControl
     {
-        public FFRKViewFriends()
+        public FFRKViewRWs()
         {
             InitializeComponent();
         }

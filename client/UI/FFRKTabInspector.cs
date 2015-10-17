@@ -27,7 +27,7 @@ namespace FFRKInspector.UI
             Gacha,
             About,
             Debugging,
-            Friends
+            RWs
         }
 
         public FFRKTabInspector()
@@ -40,7 +40,7 @@ namespace FFRKInspector.UI
             tabPageGacha.Tag = InspectorPage.Gacha;
             tabPageInventory.Tag = InspectorPage.Inventory;
             tabPageSearch.Tag = InspectorPage.ItemSearch;
-            tabPageFriends.Tag = InspectorPage.Friends;
+            tabPageRWs.Tag = InspectorPage.RWs;
         }
 
         private void FFRKTabInspectorView_Load(object sender, EventArgs e)

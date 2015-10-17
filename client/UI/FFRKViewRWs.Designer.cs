@@ -1,6 +1,6 @@
 ﻿namespace FFRKInspector.UI
 {
-    partial class FFRKViewFriends
+    partial class FFRKViewRWs
     {
         /// <summary> 
         /// Required designer variable.
@@ -75,12 +75,12 @@
             this.dgcSBName.ReadOnly = true;
             this.dgcSBName.Width = 77;
             // 
-            // FFRKViewFriends
+            // FFRKViewRWs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridViewRWs);
-            this.Name = "FFRKViewFriends";
+            this.Name = "FFRKViewRWs";
             this.Size = new System.Drawing.Size(816, 631);
             this.Load += new System.EventHandler(this.FFRKViewInventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).EndInit();
