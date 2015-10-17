@@ -36,53 +36,46 @@ namespace FFRKInspector.Proxy
         public override void Handle(Session Session)
         {
             List<DataRelatedRW> RWs = new List<DataRelatedRW>();
+            List<DataRelatedRW> Users = new List<DataRelatedRW>();
             List<DataTargetProfile> Profiles = new List<DataTargetProfile>();
 
             if (Session.oRequest.headers.RequestPath.Equals("/dff/relation/followee_and_follower_list", StringComparison.CurrentCultureIgnoreCase))
             {   
                 //We just opened the friends list. get all the user_relations and the target_profiles rcvd
                 DataAllRelations FolloweesFollowers = JsonConvert.DeserializeObject<DataAllRelations>(GetResponseBody(Session));
+                
+                //List of all user IDs, taking only follower records (status 1) from the followers list (no mutual duplication)
+                Users.AddRange(FolloweesFollowers.Followees.Users);
+                Users.AddRange(FolloweesFollowers.Followers.Users.Where((rw) => rw.RelationStatus == 1));
+
                 Profiles.AddRange(FolloweesFollowers.Followees.Profiles);
                 Profiles.AddRange(FolloweesFollowers.Followers.Profiles);
-
-                foreach (DataRelatedRW RW_relation in FolloweesFollowers.Followees.Users)
-                {
-                    DataTargetProfile ProfileData = Profiles.FirstOrDefault(a => a.UserID == RW_relation.UserID);
-                    if (ProfileData != null)
-                        RW_relation.UpdateRWData(ProfileData);
-                    RWs.Add(RW_relation);
-                }
-
-                foreach (DataRelatedRW RW_relation in FolloweesFollowers.Followers.Users.Where((rw) => rw.Status == 1))
-                {
-                    DataTargetProfile ProfileData = Profiles.FirstOrDefault(a => a.UserID == RW_relation.UserID);
-                    if (ProfileData != null)
-                        RW_relation.UpdateRWData(ProfileData);
-                    RWs.Add(RW_relation);
-                }
             }
 
             if (Session.oRequest.headers.RequestPath.Equals("/dff/relation/find_by_user_ids", StringComparison.CurrentCultureIgnoreCase))
             {
                 //extract the DataRelatedRW records and the target_profiles
                 DataRelationPackage RelationsPackage = JsonConvert.DeserializeObject<DataRelationPackage>(GetResponseBody(Session));
-                RWs.AddRange(RelationsPackage.Users);
+                Users.AddRange(RelationsPackage.Users);
                 Profiles.AddRange(RelationsPackage.Profiles);
-                foreach (DataRelatedRW RW_relation in RelationsPackage.Users)
-                {
-                    DataTargetProfile ProfileData = Profiles.FirstOrDefault(a => a.UserID == RW_relation.UserID);
-                    if (ProfileData != null)
-                        RW_relation.UpdateRWData(ProfileData);
-                    RWs.Add(RW_relation);
-                }
             }
 
             if (Session.oRequest.headers.RequestPath.Equals("/dff/relation/detailed_fellow_listing", StringComparison.CurrentCultureIgnoreCase))
             {
-                //TODO: got a fellow listing at the dungeon entrance screen. Not quite sure what to do with this yet.
-                //DataRelationPackage RelationsPackage = JsonConvert.DeserializeObject<DataRelationPackage>(GetResponseBody(Session));
-                //RWs.AddRange(RelationsPackage.Users);
-                //Profiles.AddRange(RelationsPackage.Profiles);
+                //got a fellow listing at the dungeon entrance screen
+                DataDungeonFellowListing RelationsPackage = JsonConvert.DeserializeObject<DataDungeonFellowListing>(GetResponseBody(Session));
+                foreach (DataTargetProfile DetailedProfile in RelationsPackage.Profiles)
+                    Users.Add(new DataRelatedRW(DetailedProfile.UserID, DetailedProfile.RelationStatus).UpdateRWData(DetailedProfile));
+            }
+
+            //Merge profile data into user list 
+            foreach (DataTargetProfile ProfileData in Profiles)
+            {
+                DataRelatedRW RW = Users.FirstOrDefault(a => a.UserID == ProfileData.UserID);
+                if (RW != null)
+                {
+                    RW.UpdateRWData(ProfileData);
+                }
             }
 
             //Update existing list of RWs and add new RWs
@@ -92,9 +85,9 @@ namespace FFRKInspector.Proxy
                 AllRWs = new List<DataRelatedRW>();
             }
 
-            foreach (DataRelatedRW NewRW in RWs)
+            foreach (DataRelatedRW NewRW in Users)
             {
-                DataRelatedRW ExistingRW = AllRWs.FirstOrDefault(a => a.UserID == NewRW.UserID); ;
+                DataRelatedRW ExistingRW = AllRWs.FirstOrDefault(a => a.UserID == NewRW.UserID);
                 if (ExistingRW != null)
                 {
                     //Update if we have existing data

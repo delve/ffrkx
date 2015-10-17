@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewRWs = new FFRKInspector.UI.DataGridViewEx();
             this.dgcUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcRelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcSBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).BeginInit();
             this.SuspendLayout();
@@ -47,9 +48,12 @@
             this.dataGridViewRWs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRWs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgcUserId,
+            this.dgcRelation,
             this.dgcSBName});
             this.dataGridViewRWs.Location = new System.Drawing.Point(19, 3);
             this.dataGridViewRWs.Name = "dataGridViewRWs";
+            this.dataGridViewRWs.ReadOnly = true;
+            this.dataGridViewRWs.RowHeadersVisible = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(210)))), ((int)(((byte)(228)))));
             this.dataGridViewRWs.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewRWs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -65,6 +69,14 @@
             this.dgcUserId.Name = "dgcUserId";
             this.dgcUserId.ReadOnly = true;
             this.dgcUserId.Width = 68;
+            // 
+            // dgcRelation
+            // 
+            this.dgcRelation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgcRelation.HeaderText = "Relation";
+            this.dgcRelation.Name = "dgcRelation";
+            this.dgcRelation.ReadOnly = true;
+            this.dgcRelation.Width = 71;
             // 
             // dgcSBName
             // 
@@ -92,6 +104,7 @@
 
         private DataGridViewEx dataGridViewRWs;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcRelation;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcSBName;
     }
 }

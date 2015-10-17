@@ -60,6 +60,7 @@ namespace FFRKInspector.UI
                 DataGridViewRow row = dataGridViewRWs.Rows[cur_row];
                 row.Tag = RWData;
                 row.Cells[dgcUserId.Name].Value = RWData.UserID;
+                row.Cells[dgcRelation.Name].Value = Enum.GetName(typeof(DataRelatedRW.Relationship), RWData.RelationStatus);
                 row.Cells[dgcSBName.Name].Value = RWData.SBName;
 
                 ++cur_row;

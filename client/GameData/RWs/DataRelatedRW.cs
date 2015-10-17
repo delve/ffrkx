@@ -11,15 +11,25 @@ namespace FFRKInspector.GameData.RWs
 {
     class DataRelatedRW
     {
-        //user relation and target profile data combined here. figure out how to default null missing data until target profile is added?
-        //  and array of this to be stored in GameState with all followers AND followees, UI to differentiate by relation_status value (1 is follower, 2 is followee, 3 is mutual)
+        public enum Relationship
+        {
+            Random,
+            Follower,
+            Followee,
+            Mutual
+        };
 
-        ///relation_status = 0 is no relation (from battle selection), 1 is follower, 2 is followee, 3 is mutual
+        //user relation and target profile data combined here.
+        //  An array of this is stored in GameState with all followers AND followees, UI to differentiate by relation_status value (1 is follower, 2 is followee, 3 is mutual)
+
+        ///relation_status = 0 is no relation (random options from battle selection), 1 is follower, 2 is followee, 3 is mutual
         [JsonProperty("relation_status")]
-        public byte Status;
+        public byte RelationStatus;
 
         [JsonProperty("target_user_id")]
         public ulong UserID;
+
+        //Fields below this point come from the 'profile' data structures
 
         ///nickname = player name (for identification in app list)
         [JsonProperty(PropertyName = "nickname", DefaultValueHandling = DefaultValueHandling.Populate)]
@@ -66,8 +76,14 @@ namespace FFRKInspector.GameData.RWs
         [DefaultValue(0)]
         public UInt16 Speed;
 
-        public void UpdateRWData(DataRelatedRW NewRW)
+        public DataRelatedRW(ulong User, byte Relation)
         {
+            this.UserID = User;
+            this.RelationStatus = Relation;
+        }
+
+        public DataRelatedRW UpdateRWData(DataRelatedRW NewRW)
+        {   
             this.Accuracy = NewRW.Accuracy;
             this.Attack = NewRW.Attack;
             this.Magic = NewRW.Magic;
@@ -77,19 +93,21 @@ namespace FFRKInspector.GameData.RWs
             this.SBType = NewRW.SBType;
             this.Slogan = NewRW.Slogan;
             this.Speed = NewRW.Speed;
+            return this;
         }
 
-        public void UpdateRWData(DataTargetProfile NewProfile)
-        {
-            this.Accuracy = NewProfile.Accuracy;
-            this.Attack = NewProfile.Attack;
-            this.Magic = NewProfile.Magic;
-            this.Mind = NewProfile.Mind;
-            this.NickName = NewProfile.NickName;
-            this.SBName = NewProfile.SBName;
-            this.SBType = NewProfile.SBType;
-            this.Slogan = NewProfile.Slogan;
-            this.Speed = NewProfile.Speed;
+        public DataRelatedRW UpdateRWData(DataTargetProfile NewRW)
+        {   
+            this.Accuracy = NewRW.Accuracy;
+            this.Attack = NewRW.Attack;
+            this.Magic = NewRW.Magic;
+            this.Mind = NewRW.Mind;
+            this.NickName = NewRW.NickName;
+            this.SBName = NewRW.SBName;
+            this.SBType = NewRW.SBType;
+            this.Slogan = NewRW.Slogan;
+            this.Speed = NewRW.Speed;
+            return this;
         }
     }
 }

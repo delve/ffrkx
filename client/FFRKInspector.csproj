@@ -111,6 +111,7 @@
     <Compile Include="GameData\EquipmentUsage.cs" />
     <Compile Include="GameData\EquipStats.cs" />
     <Compile Include="GameData\RWs\DataRelationPackage.cs" />
+    <Compile Include="GameData\RWs\DataDungeonFellowListing.cs" />
     <Compile Include="GameData\RWs\DataTargetProfiles.cs" />
     <Compile Include="GameData\StatCalculator.cs" />
     <Compile Include="MissingItemsDataSet1.Designer.cs">

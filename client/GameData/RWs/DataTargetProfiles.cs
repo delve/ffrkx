@@ -14,7 +14,7 @@ namespace FFRKInspector.GameData.RWs
         //relation_status = 0 is no relation (from battle selection), 1 is follower, 2 is followee, 3 is mutual
         [JsonProperty("relation_status", DefaultValueHandling = DefaultValueHandling.Populate)]
         [DefaultValue(0)]
-        public byte Status;
+        public byte RelationStatus;
 
         [JsonProperty("user_id")]
         public ulong UserID;
