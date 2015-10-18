@@ -31,27 +31,30 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pchtFriendSB = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pchtMutualSB = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pchtFollowerSB = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridViewRWs = new FFRKInspector.UI.DataGridViewEx();
             this.dgcNickname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcRelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcSBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcFriendCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pchtMutualSB = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.pchtFollowerSB = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pchtFriendSB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pchtMutualSB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pchtFollowerSB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).BeginInit();
             this.SuspendLayout();
             // 
             // pchtFriendSB
@@ -71,7 +74,63 @@
             this.pchtFriendSB.Series.Add(series1);
             this.pchtFriendSB.Size = new System.Drawing.Size(415, 285);
             this.pchtFriendSB.TabIndex = 1;
-            this.pchtFriendSB.Text = "chart1";
+            this.pchtFriendSB.Text = "Friends";
+            title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Friends";
+            title1.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            this.pchtFriendSB.Titles.Add(title1);
+            // 
+            // pchtMutualSB
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.pchtMutualSB.ChartAreas.Add(chartArea2);
+            legend2.Name = "Friends SBs";
+            this.pchtMutualSB.Legends.Add(legend2);
+            this.pchtMutualSB.Location = new System.Drawing.Point(472, 295);
+            this.pchtMutualSB.Name = "pchtMutualSB";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Friends SBs";
+            series2.Name = "Series1";
+            series2.XValueMember = "FriendSeries.SBName";
+            series2.YValueMembers = "FriendSeries.Count";
+            this.pchtMutualSB.Series.Add(series2);
+            this.pchtMutualSB.Size = new System.Drawing.Size(415, 285);
+            this.pchtMutualSB.TabIndex = 2;
+            this.pchtMutualSB.Text = "chart1";
+            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "Title1";
+            title2.Text = "Mutuals";
+            title2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            this.pchtMutualSB.Titles.Add(title2);
+            // 
+            // pchtFollowerSB
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.pchtFollowerSB.ChartAreas.Add(chartArea3);
+            legend3.Name = "Friends SBs";
+            this.pchtFollowerSB.Legends.Add(legend3);
+            this.pchtFollowerSB.Location = new System.Drawing.Point(472, 586);
+            this.pchtFollowerSB.Name = "pchtFollowerSB";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Friends SBs";
+            series3.Name = "Series1";
+            series3.XValueMember = "FriendSeries.SBName";
+            series3.YValueMembers = "FriendSeries.Count";
+            this.pchtFollowerSB.Series.Add(series3);
+            this.pchtFollowerSB.Size = new System.Drawing.Size(415, 285);
+            this.pchtFollowerSB.TabIndex = 3;
+            this.pchtFollowerSB.Text = "chart1";
+            title3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "Title1";
+            title3.Text = "Followers";
+            title3.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            this.pchtFollowerSB.Titles.Add(title3);
             // 
             // dataGridViewRWs
             // 
@@ -141,44 +200,6 @@
             this.dgcUserID.ReadOnly = true;
             this.dgcUserID.Width = 68;
             // 
-            // pchtMutualSB
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.pchtMutualSB.ChartAreas.Add(chartArea2);
-            legend2.Name = "Friends SBs";
-            this.pchtMutualSB.Legends.Add(legend2);
-            this.pchtMutualSB.Location = new System.Drawing.Point(472, 295);
-            this.pchtMutualSB.Name = "pchtMutualSB";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Friends SBs";
-            series2.Name = "Series1";
-            series2.XValueMember = "FriendSeries.SBName";
-            series2.YValueMembers = "FriendSeries.Count";
-            this.pchtMutualSB.Series.Add(series2);
-            this.pchtMutualSB.Size = new System.Drawing.Size(415, 285);
-            this.pchtMutualSB.TabIndex = 2;
-            this.pchtMutualSB.Text = "chart1";
-            // 
-            // pchtFollowerSB
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.pchtFollowerSB.ChartAreas.Add(chartArea3);
-            legend3.Name = "Friends SBs";
-            this.pchtFollowerSB.Legends.Add(legend3);
-            this.pchtFollowerSB.Location = new System.Drawing.Point(472, 586);
-            this.pchtFollowerSB.Name = "pchtFollowerSB";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Friends SBs";
-            series3.Name = "Series1";
-            series3.XValueMember = "FriendSeries.SBName";
-            series3.YValueMembers = "FriendSeries.Count";
-            this.pchtFollowerSB.Series.Add(series3);
-            this.pchtFollowerSB.Size = new System.Drawing.Size(415, 285);
-            this.pchtFollowerSB.TabIndex = 3;
-            this.pchtFollowerSB.Text = "chart1";
-            // 
             // FFRKViewRWs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,9 +212,9 @@
             this.Size = new System.Drawing.Size(891, 878);
             this.Load += new System.EventHandler(this.FFRKViewInventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pchtFriendSB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pchtMutualSB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pchtFollowerSB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRWs)).EndInit();
             this.ResumeLayout(false);
 
         }
