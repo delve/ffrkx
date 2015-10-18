@@ -46,7 +46,7 @@ namespace FFRKInspector.Proxy
                 
                 //List of all user IDs, taking only follower records (status 1) from the followers list (no mutual duplication)
                 Users.AddRange(FolloweesFollowers.Followees.Users);
-                Users.AddRange(FolloweesFollowers.Followers.Users.Where((rw) => rw.RelationStatus == 1));
+                Users.AddRange(FolloweesFollowers.Followers.Users.Where((rw) => rw.RelationStatus == (byte)DataRelatedRW.Relationship.Follower));
 
                 Profiles.AddRange(FolloweesFollowers.Followees.Profiles);
                 Profiles.AddRange(FolloweesFollowers.Followers.Profiles);
