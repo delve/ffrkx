@@ -118,7 +118,6 @@ namespace FFRKInspector.UI
                 row.Cells[dgcSBName.Name].Value = RWData.SBName;
                 //TODO: Figure out how the hell to derive this from the UserID data
                 row.Cells[dgcFriendCode.Name].Value = "";
-                row.Cells[dgcUserID.Name].Value = RWData.UserID;
 
                 ++cur_row;
             }

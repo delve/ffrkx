@@ -50,7 +50,6 @@
             this.dgcRelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcSBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcFriendCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pchtFriendSB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pchtMutualSB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pchtFollowerSB)).BeginInit();
@@ -145,8 +144,7 @@
             this.dgcNickname,
             this.dgcRelation,
             this.dgcSBName,
-            this.dgcFriendCode,
-            this.dgcUserID});
+            this.dgcFriendCode});
             this.dataGridViewRWs.Location = new System.Drawing.Point(19, 3);
             this.dataGridViewRWs.Name = "dataGridViewRWs";
             this.dataGridViewRWs.ReadOnly = true;
@@ -192,14 +190,6 @@
             this.dgcFriendCode.ReadOnly = true;
             this.dgcFriendCode.Width = 89;
             // 
-            // dgcUserID
-            // 
-            this.dgcUserID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgcUserID.HeaderText = "User ID";
-            this.dgcUserID.Name = "dgcUserID";
-            this.dgcUserID.ReadOnly = true;
-            this.dgcUserID.Width = 68;
-            // 
             // FFRKViewRWs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,13 +212,12 @@
         #endregion
 
         private DataGridViewEx dataGridViewRWs;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pchtFriendSB;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pchtMutualSB;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pchtFollowerSB;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcNickname;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcRelation;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcSBName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcFriendCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcUserID;
-        private System.Windows.Forms.DataVisualization.Charting.Chart pchtFriendSB;
-        private System.Windows.Forms.DataVisualization.Charting.Chart pchtMutualSB;
-        private System.Windows.Forms.DataVisualization.Charting.Chart pchtFollowerSB;
     }
 }
